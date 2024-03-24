@@ -17,13 +17,13 @@
 package org.lineageos.settings.device;
 
 import android.os.Bundle;
-import android.widget.Switch;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 
 import androidx.preference.PreferenceFragment;
 
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
 import com.android.settingslib.widget.MainSwitchPreference;
-import com.android.settingslib.widget.OnMainSwitchChangeListener;
 
 public class PreferenceActivity extends CollapsingToolbarBaseActivity {
 
@@ -38,7 +38,7 @@ public class PreferenceActivity extends CollapsingToolbarBaseActivity {
     }
 
     public static class SoundPreferenceFragment extends PreferenceFragment
-        implements OnMainSwitchChangeListener {
+        implements OnCheckedChangeListener {
 
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -51,7 +51,7 @@ public class PreferenceActivity extends CollapsingToolbarBaseActivity {
         }
 
         @Override
-        public void onSwitchChanged(Switch switchView, boolean isChecked) {
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
             BesLoudnessManager.set(getContext(), isChecked);
         }
     }
